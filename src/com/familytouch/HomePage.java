@@ -68,15 +68,17 @@ public class HomePage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.aty_homepage);
+		
+		if (savedInstanceState==null) {
+			init();
+		}
+	}
 
-		titleImgIDList = new ArrayList<Integer>();
-		titleImgIDList.add(R.drawable.remind);
-		titleImgIDList.add(R.drawable.fond);
-		titleImgIDList.add(R.drawable.my);
-		titleImgIDList.add(R.drawable.community);
-		titleImgIDList.add(R.drawable.latest);
-
-		init();
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		outState.putAll(outState);
+		super.onSaveInstanceState(outState);
 	}
 
 	public static class TitleFragment extends ListFragment {
@@ -197,6 +199,13 @@ public class HomePage extends Activity {
 
 	@SuppressLint("InflateParams")
 	public void init() {
+		titleImgIDList = new ArrayList<Integer>();
+		titleImgIDList.add(R.drawable.remind);
+		titleImgIDList.add(R.drawable.fond);
+		titleImgIDList.add(R.drawable.my);
+		titleImgIDList.add(R.drawable.community);
+		titleImgIDList.add(R.drawable.latest);
+		
 		getLayoutInflater();
 		// tempView = (View) findViewById(R.layout.layout_mainbody1); return
 		// null why????
@@ -367,7 +376,6 @@ public class HomePage extends Activity {
 		}
 		updateLab[array.size()] = "add";
 		updateImg[array.size()] = R.drawable.ic_addnewservice;
-		int t = R.drawable.ic_addservice1;
 		ArrayList<HashMap<String, Object>> updateList = new ArrayList<HashMap<String,Object>>();
 		
 		for (int i = 0; i < updateLab.length; i++) {

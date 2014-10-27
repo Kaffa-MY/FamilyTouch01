@@ -54,46 +54,51 @@ public class GridOnClickListener implements OnItemClickListener {
 				serviceTitle[i] = serviceList.get(i).getName();
 			}
 
+			// 存在一致性的问题
 			if (dialogBuilder == null) {
 				dialogBuilder = new AlertDialog.Builder(activity);
 				dialogBuilder.setMultiChoiceItems(serviceTitle, initBool,
 						new DialogInterface.OnMultiChoiceClickListener() {
-
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which, boolean isChecked) {
 								// TODO Auto-generated method stub
 								if (isChecked) {
-									serviceAddList.add(serviceList.get(which));
+									if (!serviceAddList.contains(serviceList
+											.get(which))) {
+										serviceAddList.add(serviceList
+												.get(which));
+									}
 								} else {
-									serviceAddList.remove(serviceList
-											.get(which));
+									// TODO bug:只增不减
+									if (serviceAddList.contains(serviceList
+											.get(which))) {
+										serviceAddList.remove(serviceList
+												.get(which));
+									}
 								}
 							}
 						});
-				dialogBuilder.setPositiveButton("Add",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-								((HomePage) activity)
-										.updateView(serviceAddList);
-							}
-						});
-				dialogBuilder.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-
-							}
-						});
-				dialogBuilder.setTitle("Add new service");
 			}
+			dialogBuilder.setPositiveButton("Add",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							((HomePage) activity).updateView(serviceAddList);
+						}
+					});
+			dialogBuilder.setNegativeButton("Cancel",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+
+						}
+					});
+			dialogBuilder.setTitle("Add new service");
 			dialogBuilder.create().show();
 
 			break;
