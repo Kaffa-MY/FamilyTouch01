@@ -4,27 +4,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.familytouch.HomePage;
 import com.familytouch.R;
 import com.familytouch.data.ServiceJsonObject;
+import com.familytouch.ui.HomePage;
+import com.familytouch.ui.WebBrowser;
 import com.familytouch.util.JsonUtil;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class GridOnClickListener implements OnItemClickListener {
 	private Activity activity;
-
+	private Intent intent;
+	
 	JsonUtil jsonUtil;
 	final String FILE_NAME = "test.json";
 	List<ServiceJsonObject> serviceList;
 	ArrayList<ServiceJsonObject> serviceAddList = new ArrayList<ServiceJsonObject>();
 	AlertDialog.Builder dialogBuilder = null;
 
+	
 	public GridOnClickListener(Activity act) {
 		activity = act;
 	}
@@ -102,7 +106,25 @@ public class GridOnClickListener implements OnItemClickListener {
 			dialogBuilder.create().show();
 
 			break;
+			
+		case R.drawable.ic_addservice1:
+			intent = new Intent(activity.getApplicationContext(), WebBrowser.class);
+			intent.putExtra("url", "https://www.alipay.com");
+			activity.startActivity(intent);
+			break;
 
+		case R.drawable.ic_addservice2:
+			intent = new Intent(activity.getApplicationContext(), WebBrowser.class);
+			intent.putExtra("url", "http://www.baidu.com");
+			activity.startActivity(intent);
+			break;
+			
+		case R.drawable.ic_addservice3:
+			intent = new Intent(activity.getApplicationContext(), WebBrowser.class);
+			intent.putExtra("url", "http://www.taobao.com");
+			activity.startActivity(intent);
+			break;
+			
 		default:
 			break;
 		}

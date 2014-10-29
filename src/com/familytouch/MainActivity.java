@@ -1,5 +1,7 @@
 package com.familytouch;
 
+import com.familytouch.ui.HomePage;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

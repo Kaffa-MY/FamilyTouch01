@@ -1,8 +1,10 @@
-package com.familytouch;
+package com.familytouch.ui;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.familytouch.R;
+import com.familytouch.R.xml;
 import com.familytouch.data.ServiceJsonObject;
 import com.familytouch.util.JsonUtil;
 

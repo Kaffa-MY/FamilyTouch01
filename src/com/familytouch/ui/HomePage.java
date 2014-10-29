@@ -1,4 +1,4 @@
-package com.familytouch;
+package com.familytouch.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +30,10 @@ import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.familytouch.R;
+import com.familytouch.R.drawable;
+import com.familytouch.R.id;
+import com.familytouch.R.layout;
 import com.familytouch.control.GridOnClickListener;
 import com.familytouch.control.TitleArrayAdapter;
 import com.familytouch.data.ServiceJsonObject;
